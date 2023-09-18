@@ -110,3 +110,35 @@ module.exports = {
   "test": "npm run test:test1"
 }
 ```
+
+### 11. add .env file
+
+```
+API_ENDPOINT='http://maybepizza.com'
+```
+
+### 12. create first test
+
+src/tests/test-1.js
+```javascript
+import http from "k6/http"
+export const options = {
+  scenarios: {
+    scenario1: {
+      executor: "per-vu-iterations",
+      vus: 1,
+      iterations: 5,
+      maxDuration: "10s",
+    },
+  },
+};
+
+export default function() {
+  http.get(`${process.env.API_ENDPOINT}/feed.json`);
+}
+```
+
+### 13. run tests
+```bash
+npm run test
+```
