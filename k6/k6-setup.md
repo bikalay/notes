@@ -69,7 +69,7 @@ project/
 | | | test-1.js
 | .babelrc
 | .env
-| pockage.json
+| package.json
 | webpack.config.js
 ```
 
@@ -100,11 +100,13 @@ module.exports = {
   plugins: [new Dotenv()],
 };
 ```
+
 ### 10. add scripts to package.json
+
 ```json
 "scripts": {
   "pretest": "webpack",
-  "test:test1": "k6 run tests/test.test1.js",
+  "test:test1": "k6 run ./dist/test.test1.js",
   "test": "npm run test:test1"
 }
 ```
